@@ -102,16 +102,13 @@ export default function Home() {
     setInquiryStatus("sending");
 
     try {
-      const response = await fetch(
-        "https://formspree.io/f/mbggpjql",
-        {
-          method: "POST",
-          body: formData,
-          headers: {
-            Accept: "application/json",
-          },
-        }
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(Object.fromEntries(formData.entries())),
+      });
 
       if (!response.ok) {
         throw new Error("Submission failed");
@@ -644,7 +641,7 @@ export default function Home() {
           <div className="rounded-3xl border border-cyan-400/20 bg-[#101827] p-6 shadow-[0_0_50px_rgba(34,211,238,0.04)] md:p-10">
 
             <form
-              action="https://formspree.io/f/mbggpjql"
+              action="/api/contact"
               method="POST"
               className="space-y-6"
               onSubmit={handleInquirySubmit}
@@ -793,7 +790,7 @@ export default function Home() {
               )}
 
               <p className="text-center text-xs text-slate-500">
-                Your inquiry will be securely processed through Formspree.
+                Your inquiry will be sent directly to my email.
               </p>
 
             </form>
@@ -810,6 +807,7 @@ export default function Home() {
     </main>
   );
 }
+
 
 
 

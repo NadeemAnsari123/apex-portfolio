@@ -45,3 +45,7 @@ APEX_PORTFOLIO_COMMANDS.md
 # Local development backups
 *.backup.*
 *.before-*.txt
+
+*.tsx.backup
+
+*.ts.backup
