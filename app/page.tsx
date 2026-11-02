@@ -801,12 +801,13 @@ export default function Home() {
       </section>
       {/* FOOTER */}
       <footer className="border-t border-cyan-400/10 px-6 py-8 text-center text-sm text-slate-500">
-        © 2026 Nadeem Ansari. Built with Next.js.
+        © 2026 Nadeem Ansari. All Rights Reserved.
       </footer>
 
     </main>
   );
 }
+
 
 
 
