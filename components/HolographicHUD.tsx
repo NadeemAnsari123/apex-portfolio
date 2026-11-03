@@ -39,7 +39,7 @@ export default function HolographicHUD() {
         </span>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-3">
+<div className="grid grid-cols-3 gap-1 sm:gap-3">
         {systems.map((system, index) => (
           <button
             key={system.id}
@@ -64,7 +64,7 @@ export default function HolographicHUD() {
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
             </div>
 
-            <h3 className="text-[11px] font-bold tracking-wide text-cyan-100">
+<h3 className="text-[11px] font-bold leading-snug tracking-wide text-cyan-100">
               {system.name}
             </h3>
 

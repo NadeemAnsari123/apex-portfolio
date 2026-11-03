@@ -137,7 +137,8 @@ export default function AICore() {
 
         {/* Energy core */}
         <div className="na-float relative z-10 flex h-[29%] w-[29%] flex-col items-center justify-center rounded-full border border-cyan-200/80 bg-gradient-to-br from-[#123B59] via-[#071C30] to-[#06101C] shadow-[0_0_45px_rgba(34,211,238,.35),inset_0_0_30px_rgba(34,211,238,.15)]">
-          <span className="text-[clamp(24px,5vw,43px)] font-black tracking-tight text-cyan-100 drop-shadow-[0_0_12px_rgba(103,232,249,.7)]">
+          {/* <span className="text-[clamp(24px,5vw,43px)] font-black tracking-tight text-cyan-100 drop-shadow-[0_0_12px_rgba(103,232,249,.7)]"> */}
+          <span className="text-[clamp(12px,3vw,24px)] font-black tracking-tight text-cyan-100 drop-shadow-[0_0_12px_rgba(103,232,249,.7)] sm:text-[clamp(24px,5vw,43px)]">
             NA
           </span>
           <span className="mt-1 text-[clamp(5px,1vw,8px)] font-bold tracking-[0.15em] text-cyan-300">
@@ -147,12 +148,12 @@ export default function AICore() {
       </div>
 
       {/* Floating HUD labels */}
-      <div className="absolute left-[2%] top-[13%] font-mono text-[8px] tracking-[0.12em] text-cyan-300/80 sm:text-[10px]">
+      <div className="absolute left-[2%] top-[13%] hidden font-mono text-[8px] tracking-[0.12em] text-cyan-300/80 lg:block lg:text-[10px]">
         <span className="mr-2 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
         SYSTEM ONLINE
       </div>
 
-      <div className="absolute bottom-[15%] right-[1%] font-mono text-[8px] tracking-[0.12em] text-cyan-300/80 sm:text-[10px]">
+      <div className="absolute bottom-[15%] right-[1%] hidden font-mono text-[8px] tracking-[0.12em] text-cyan-300/80 lg:block lg:text-[10px]">
         ORACLE APEX
       </div>
 

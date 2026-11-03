@@ -190,7 +190,99 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-20 pt-20 md:pb-28 md:pt-28">
+      <section className="relative overflow-hidden px-6 pb-5 pt-4 md:pb-28 md:pt-28">
+        
+{/* MOBILE ONLY — JARVIS DIGITAL ATMOSPHERE */}
+
+{/* Mobile hologram animations */}
+<style>{`
+  @keyframes mobileWaveFlow {
+    0% { transform: translateX(-3%) translateY(0); opacity: .35; }
+    50% { transform: translateX(3%) translateY(-5px); opacity: .85; }
+    100% { transform: translateX(-3%) translateY(0); opacity: .35; }
+  }
+
+  @keyframes mobileGlobeRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes mobileEnergyPulse {
+    0%, 100% {
+      opacity: .45;
+      filter: drop-shadow(0 0 3px #22d3ee);
+    }
+    50% {
+      opacity: 1;
+      filter: drop-shadow(0 0 12px #22d3ee);
+    }
+  }
+
+  .mobile-hud-wave {
+    animation: mobileWaveFlow 5s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .mobile-hud-globe {
+    animation: mobileGlobeRotate 24s linear infinite;
+  }
+
+  .mobile-hud-energy {
+    animation: mobileEnergyPulse 3s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-hud-wave,
+    .mobile-hud-globe,
+    .mobile-hud-energy {
+      animation: none !important;
+    }
+  }
+`}</style>
+
+<div className="pointer-events-none relative mx-auto mb-0 h-28 w-full max-w-7xl overflow-hidden lg:hidden">
+  {/* Digital wave lines */}
+<div className="absolute inset-0 opacity-70 mobile-hud-wave">
+    <svg
+      viewBox="0 0 400 130"
+      preserveAspectRatio="none"
+      className="h-full w-full"
+      aria-hidden="true"
+    >
+      {Array.from({ length: 13 }, (_, i) => (
+        <path
+          key={i}
+          d={`M -30 ${15 + i * 6} C 100 ${-20 + i * 4}, 190 ${140 - i * 3}, 430 ${20 + i * 5}`}
+          fill="none"
+          stroke="#22d3ee"
+          strokeWidth="0.6"
+          opacity={0.12 + i * 0.025}
+        />
+      ))}
+    </svg>
+  </div>
+
+  {/* Digital globe */}
+  <div className="absolute right-2 top-2 flex h-24 w-24 items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/[0.04] shadow-[0_0_35px_rgba(34,211,238,0.12)] mobile-hud-energy">
+    <div className="absolute inset-3 rounded-full border border-dashed border-cyan-300/40 mobile-hud-globe" />
+    <div className="absolute inset-6 rounded-full border border-cyan-400/30" />
+    <div className="h-16 w-8 rounded-full border border-cyan-300/40" />
+    <div className="absolute h-px w-20 bg-cyan-400/40" />
+    <div className="absolute h-20 w-px bg-cyan-400/30" />
+    <span className="absolute -right-1 top-6 h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_12px_#22d3ee]" />
+  </div>
+
+  {/* Technology badge */}
+  <div className="absolute left-2 top-3 rounded-full border border-cyan-400/30 bg-[#06101C]/80 px-3 py-2 font-mono text-[9px] font-semibold tracking-wider text-cyan-200">
+    ORACLE APEX · SQL · BI · HCM
+  </div>
+
+  <div className="absolute bottom-3 left-3 flex items-center gap-2 font-mono text-[9px] tracking-widest text-cyan-400/70">
+    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+    JARVIS SYSTEM ONLINE
+  </div>
+</div>
+
 
         {/* Background glow */}
         <div className="pointer-events-none absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-cyan-500/[0.07] blur-[130px]" />
@@ -199,7 +291,8 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl">
 
           {/* TWO-COLUMN HERO */}
-          <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12"> */}
+          <div className="grid grid-cols-2 items-start gap-3 sm:gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
 
             {/* LEFT — INTRODUCTION */}
             <div className="relative z-10">
@@ -209,34 +302,38 @@ export default function Home() {
                 ORACLE APEX · ENTERPRISE APPLICATIONS
               </div>
 
-              <h1 className="text-4xl font-black leading-[1.12] tracking-tight sm:text-5xl xl:text-6xl">
+              {/* <h1 className="text-4xl font-black leading-[1.12] tracking-tight sm:text-5xl xl:text-6xl"> */}
+              <h1 className="text-[clamp(13px,3.8vw,24px)] font-black leading-[1.2] tracking-tight sm:text-5xl lg:text-4xl xl:text-6xl">
                 Hi, I'm Nadeem.
                 <span className="mt-4 block bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400 bg-clip-text text-transparent">
                   Oracle APEX Developer & Consultant.
                 </span>
               </h1>
 
-              <p className="mt-8 max-w-xl text-base leading-8 text-slate-400 sm:text-lg">
+              {/* <p className="mt-8 max-w-xl text-base leading-8 text-slate-400 sm:text-lg"> */}
+              <p className="mt-3 max-w-xl text-[10px] leading-[1.5] text-slate-400 sm:mt-8 sm:text-lg sm:leading-8">
                 I design and develop business applications using Oracle APEX,
                 SQL, reporting, and dashboards—helping organizations streamline
                 workflows and improve operational efficiency.
               </p>
 
-              <p className="mt-5 flex items-center gap-2 text-sm font-medium text-emerald-400">
+              {/* <p className="mt-5 flex items-center gap-2 text-sm font-medium text-emerald-400"> */}
+               <p className="mt-3 hidden items-start gap-1.5 text-[9px] leading-[1.4] font-medium text-emerald-400 lg:mt-5 lg:flex lg:items-center lg:gap-2 lg:text-sm">
                 <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
                 Open to Full-Time Opportunities & Freelance Projects
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              {/* <div className="mt-10 flex flex-wrap gap-4"> */}
+              <div className="mt-4 hidden flex-col items-start gap-2 lg:mt-10 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:gap-4">
                 <a
                   href="#projects"
-                  className="rounded-full bg-cyan-500 px-7 py-3.5 font-semibold text-[#06101C] transition hover:bg-cyan-300"
+                  className="inline-flex items-center justify-center rounded-full bg-cyan-500 px-2 py-2 text-center text-[9px] font-semibold leading-tight text-[#06101C] transition hover:bg-cyan-300 sm:px-7 sm:py-3.5 sm:text-base"
                 >
                   View Projects →
                 </a>
 
                 <a
                   href="#contact"
-                  className="rounded-full border border-cyan-400/30 px-7 py-3.5 font-semibold text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10"
+                  className="inline-flex items-center justify-center rounded-full border border-cyan-400/30 px-2 py-2 text-center text-[9px] font-semibold leading-tight text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10 sm:px-7 sm:py-3.5 sm:text-base"
                 >
                   Hire Me / Let's Talk
                 </a>
@@ -244,38 +341,71 @@ export default function Home() {
                 <a
                   href="/Nadeem_Ansari_Oracle_APEX_Developer.pdf"
                   download="Nadeem_Ansari_Resume.pdf"
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-500/50 px-7 py-3.5 font-semibold text-white transition hover:border-cyan-300 hover:bg-cyan-400/10"
+                  className="inline-flex items-center justify-center gap-1 rounded-full border border-slate-500/50 px-2 py-2 text-center text-[9px] font-semibold leading-tight text-white transition hover:border-cyan-300 hover:bg-cyan-400/10 sm:gap-2 sm:px-7 sm:py-3.5 sm:text-base"
                 >
                   <span aria-hidden="true">↓</span>
                   Download Resume
                 </a>
               </div>
 
-              <div className="mt-12 flex items-center gap-3 border-l-2 border-cyan-400/50 pl-4">
+              <div className="mt-3 hidden items-center gap-3 border-l-2 border-cyan-400/50 pl-3 lg:mt-12 lg:flex lg:pl-4">
                 <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-400">
                   NA / ENTERPRISE COMMAND CENTER
                 </span>
               </div>
             </div>
 
-            {/* RIGHT — HOLOGRAPHIC AI CORE */}
-            <div className="relative flex min-w-0 items-center justify-center overflow-hidden py-4">
-              <div className="relative w-full">
-  <div className="relative z-10">
-    <HolographicEffects />
-    <AICore />
-  </div>
+           
+{/* RIGHT — HOLOGRAPHIC AI CORE */}
+<div className="relative col-span-1 flex min-w-0 flex-col items-start justify-start pt-2 lg:block lg:py-4">
+  <div className="relative w-full">
 
-  <div className="relative z-20 mx-auto -mt-3 w-full max-w-[520px] rounded-2xl border border-cyan-400/10 bg-[#06101C]/70 p-3 shadow-[0_0_45px_rgba(34,211,238,0.04)] backdrop-blur-xl sm:-mt-6">
-    <HolographicHUD />
+    {/* Animated JARVIS hologram */}
+    <div className="relative z-10">
+      <HolographicEffects />
+      <AICore />
+    </div>
+
+    {/* HUD — desktop only in this position */}
+    <div className="relative z-20 mx-auto mt-1 hidden w-full max-w-[520px] rounded-2xl border border-cyan-400/10 bg-[#06101C]/70 p-3 shadow-[0_0_45px_rgba(34,211,238,0.04)] backdrop-blur-xl lg:-mt-6 lg:block">
+      <HolographicHUD />
+    </div>
+
   </div>
 </div>
-            </div>
 
-          </div>
+{/* MOBILE — COMPACT TWO-COLUMN ACTIONS */}
+<div className="col-span-2 grid min-w-0 grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-3 lg:hidden">
+  <div className="min-w-0 space-y-5 pt-1">
+    <p className="flex items-start gap-2 text-[11px] leading-5 font-medium text-emerald-400">
+      <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-emerald-400" />
+      <span>Open to Full-Time Opportunities &amp; Freelance Projects</span>
+    </p>
+    <div className="border-l-2 border-cyan-400/60 pl-3 font-mono text-[10px] leading-5 tracking-[0.12em] text-cyan-400">
+      NA / ENTERPRISE COMMAND CENTER
+    </div>
+  </div>
+  <div className="flex min-w-0 flex-col items-stretch gap-2">
+    <a href="#projects" className="flex min-h-10 items-center justify-center rounded-full bg-cyan-500 px-2 py-2 text-center text-[11px] font-semibold leading-tight text-[#06101C] transition hover:bg-cyan-300">
+      View Projects →
+    </a>
+    <a href="#contact" className="flex min-h-10 items-center justify-center rounded-full border border-cyan-400/30 px-2 py-2 text-center text-[11px] font-semibold leading-tight text-cyan-200 transition hover:border-cyan-300 hover:bg-cyan-400/10">
+      Hire Me / Let&apos;s Talk
+    </a>
+    <a href="/Nadeem_Ansari_Oracle_APEX_Developer.pdf" download="Nadeem_Ansari_Resume.pdf" className="flex min-h-10 items-center justify-center gap-1 rounded-full border border-slate-500/50 px-2 py-2 text-center text-[11px] font-semibold leading-tight text-white transition hover:border-cyan-300 hover:bg-cyan-400/10">
+      <span aria-hidden="true">↓</span> Download Resume
+    </a>
+  </div>
+</div>
+
+{/* FULL-WIDTH HUD — MOBILE ONLY */}
+<div className="relative z-20 col-span-2 mt-0 min-w-0 rounded-2xl border border-cyan-400/10 bg-[#06101C]/70 p-3 shadow-[0_0_45px_rgba(34,211,238,0.04)] backdrop-blur-xl lg:hidden">
+  <HolographicHUD />
+</div>
+</div> {/* END HERO GRID */}
 
           {/* SYSTEM STATUS HUD */}
-          <div className="mt-14 grid gap-4 sm:grid-cols-3">
+          <div className="mt-6 grid grid-cols-3 gap-2 sm:mt-14 sm:gap-4">
 
             {[
               {
@@ -296,23 +426,25 @@ export default function Home() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="group relative overflow-hidden rounded-xl border border-cyan-400/20 bg-cyan-400/[0.04] px-6 py-5 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/60 hover:bg-cyan-400/[0.08]"
+                className="group relative min-w-0 overflow-hidden rounded-xl border border-cyan-400/20 bg-cyan-400/[0.04] px-2 py-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-cyan-300/60 hover:bg-cyan-400/[0.08] sm:px-6 sm:py-5"
               >
                 <div className="absolute left-0 top-0 h-5 w-5 border-l border-t border-cyan-400/60" />
                 <div className="absolute bottom-0 right-0 h-5 w-5 border-b border-r border-cyan-400/60" />
 
-                <p className="mb-3 font-mono text-[10px] tracking-[0.2em] text-slate-500">
-                  {item.label}
+                <p className="mb-2 font-mono text-[8px] tracking-normal text-slate-500 sm:mb-3 sm:text-[10px] sm:tracking-[0.2em]">
+                  <span className="sm:hidden">{item.label === "SYSTEM STATUS" ? "STATUS" : item.label === "SPECIALIZATION" ? "SPECIALTY" : "MODE"}</span>
+                  <span className="hidden sm:inline">{item.label}</span>
                 </p>
 
-                <div className="flex items-center gap-2">
+                <div className="flex min-w-0 items-center gap-1 sm:gap-2">
                   <span className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-30" />
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
                   </span>
 
-                  <span className={`font-mono text-sm font-bold tracking-wider ${item.color}`}>
-                    {item.value}
+                  <span className={`min-w-0 font-mono text-[10px] font-bold tracking-normal sm:text-sm sm:tracking-wider ${item.color}`}>
+                    <span className="sm:hidden">{item.label === "SPECIALIZATION" ? "APEX" : item.label === "OPERATION MODE" ? "REMOTE" : item.value}</span>
+                    <span className="hidden sm:inline">{item.value}</span>
                   </span>
                 </div>
               </div>
@@ -325,20 +457,20 @@ export default function Home() {
       {/* ABOUT */}
       <section
         id="about"
-        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-8 md:py-24"
       >
-        <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2">
+        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 md:gap-12">
           <div>
             <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
               // ABOUT ME
             </p>
 
-            <h2 className="text-3xl font-bold leading-tight sm:text-4xl">
+            <h2 className="text-2xl font-bold leading-tight sm:text-4xl">
               Business understanding meets technical execution.
             </h2>
           </div>
 
-          <p className="text-lg leading-9 text-slate-400">
+          <p className="text-base leading-7 text-slate-400 md:text-lg md:leading-9">
             I am an India-based enterprise application professional with
             experience in Oracle technologies, CRM applications, SQL reporting,
             requirements analysis, and application support. I focus on
@@ -351,7 +483,7 @@ export default function Home() {
       {/* PROFESSIONAL EXPERIENCE */}
       <section
         id="experience"
-        className="scroll-mt-24 border-t border-cyan-400/10 px-6 py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 px-6 py-8 md:py-24"
       >
         <div className="mx-auto max-w-7xl">
           <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
@@ -362,51 +494,51 @@ export default function Home() {
             Professional Experience
           </h2>
 
-          <p className="mb-12 max-w-2xl leading-7 text-slate-400">
+          <p className="mb-6 max-w-2xl leading-7 text-slate-400 md:mb-12">
             Combining enterprise technology knowledge, client engagement,
             and business consulting to deliver practical solutions.
           </p>
 
-          <div className="relative space-y-6 border-l-2 border-cyan-400/20 pl-7 md:pl-10">
+          <div className="grid grid-cols-2 items-stretch gap-3 md:block md:space-y-6 md:border-l-2 md:border-cyan-400/20 md:pl-10">
 
-            <article className="relative rounded-3xl border border-cyan-400/20 bg-[#0C1625] p-6 transition hover:border-cyan-400/50 md:p-8">
-              <span className="absolute -left-[37px] top-9 h-3 w-3 rounded-full border-2 border-cyan-300 bg-[#060B16] md:-left-[49px]" />
+            <article className="relative min-w-0 rounded-2xl border border-cyan-400/20 bg-[#0C1625] p-3 transition hover:border-cyan-400/50 sm:p-4 md:rounded-3xl md:p-8">
+              <span className="absolute -left-[49px] top-9 hidden h-3 w-3 rounded-full border-2 border-cyan-300 bg-[#060B16] md:block" />
 
-              <p className="mb-3 font-mono text-xs tracking-widest text-cyan-400">
+              <p className="mb-2 font-mono text-[9px] leading-4 tracking-wide text-cyan-400 sm:text-xs md:mb-3 md:tracking-widest">
                 JAN 2025 — PRESENT
               </p>
 
-              <h3 className="text-xl font-bold text-white">
+              <h3 className="text-sm font-bold leading-5 text-white sm:text-base md:text-xl">
                 Oracle APEX &amp; PL/SQL Developer
               </h3>
 
-              <p className="mt-2 font-semibold text-cyan-200">
+              <p className="mt-2 text-xs font-semibold leading-5 text-cyan-200 sm:text-sm md:text-base">
                 TI Infotech Pvt. Ltd.
               </p>
 
-              <p className="mt-5 leading-7 text-slate-400">
+              <p className="mt-3 text-xs leading-5 text-slate-400 sm:text-sm md:mt-5 md:text-base md:leading-7">
                 Working on enterprise application solutions, business
                 requirements gathering, product demonstrations, functional
                 documentation, and client consulting.
               </p>
             </article>
 
-            <article className="relative rounded-3xl border border-cyan-400/20 bg-[#0C1625] p-6 transition hover:border-cyan-400/50 md:p-8">
-              <span className="absolute -left-[37px] top-9 h-3 w-3 rounded-full border-2 border-cyan-300 bg-[#060B16] md:-left-[49px]" />
+            <article className="relative min-w-0 rounded-2xl border border-cyan-400/20 bg-[#0C1625] p-3 transition hover:border-cyan-400/50 sm:p-4 md:rounded-3xl md:p-8">
+              <span className="absolute -left-[49px] top-9 hidden h-3 w-3 rounded-full border-2 border-cyan-300 bg-[#060B16] md:block" />
 
-              <p className="mb-3 font-mono text-xs tracking-widest text-cyan-400">
+              <p className="mb-2 font-mono text-[9px] leading-4 tracking-wide text-cyan-400 sm:text-xs md:mb-3 md:tracking-widest">
                 AUG 2022 — JAN 2025
               </p>
 
-              <h3 className="text-xl font-bold text-white">
+              <h3 className="text-sm font-bold leading-5 text-white sm:text-base md:text-xl">
                 Oracle APEX &amp; PL/SQL Developer
               </h3>
 
-              <p className="mt-2 font-semibold text-cyan-200">
+              <p className="mt-2 text-xs font-semibold leading-5 text-cyan-200 sm:text-sm md:text-base">
                 Cognizant Technology Solutions
               </p>
 
-              <p className="mt-5 leading-7 text-slate-400">
+              <p className="mt-3 text-xs leading-5 text-slate-400 sm:text-sm md:mt-5 md:text-base md:leading-7">
                 Supported enterprise technology solutions through client
                 engagement, requirements analysis, functional documentation,
                 solution support, and customer success activities.
@@ -417,34 +549,34 @@ export default function Home() {
         </div>
       </section>
       {/* EXPERTISE */}
-      <section id="expertise" className="scroll-mt-24 px-6 py-24">
+      <section id="expertise" className="scroll-mt-24 px-6 py-8 md:py-24">
         <div className="mx-auto max-w-7xl">
 
           <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
             // WHAT I DO
           </p>
 
-          <h2 className="mb-12 text-4xl font-bold">
+          <h2 className="mb-6 text-3xl font-bold md:mb-12 md:text-4xl">
             Core Expertise
           </h2>
 
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-5">
             {expertise.map((skill) => (
               <div
                 key={skill.number}
-                className="group relative overflow-hidden rounded-3xl border border-cyan-400/10 bg-[#0C1625] p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_35px_rgba(34,211,238,0.06)]"
+                className="group relative overflow-hidden rounded-3xl border border-cyan-400/10 bg-[#0C1625] p-3 sm:p-5 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_35px_rgba(34,211,238,0.06)]"
               >
-                <p className="mb-7 font-mono text-xs tracking-widest text-cyan-400/60">
+                <p className="mb-3 font-mono text-[10px] tracking-wider text-cyan-400/60 md:mb-7 md:text-xs md:tracking-widest">
                   MODULE_{skill.number}
                 </p>
 
-                <div className="mb-6 h-1 w-12 rounded-full bg-cyan-400" />
+                <div className="mb-3 h-1 w-8 rounded-full bg-cyan-400 md:mb-6 md:w-12" />
 
-                <h3 className="mb-4 text-xl font-bold">
+                <h3 className="mb-2 break-words text-sm font-bold leading-snug sm:text-base md:mb-4 md:text-xl">
                   {skill.title}
                 </h3>
 
-                <p className="leading-7 text-slate-400">
+                <p className="break-words text-[11px] leading-5 text-slate-400 sm:text-sm md:text-base md:leading-7">
                   {skill.text}
                 </p>
               </div>
@@ -456,7 +588,7 @@ export default function Home() {
       {/* PROJECTS */}
       <section
         id="projects"
-        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-8 md:py-24"
       >
         <div className="mx-auto max-w-7xl">
 
@@ -464,19 +596,19 @@ export default function Home() {
             // SELECTED WORK
           </p>
 
-          <h2 className="mb-5 text-4xl font-bold">
+          <h2 className="mb-5 text-3xl font-bold md:text-4xl">
             Featured Projects
           </h2>
 
-          <p className="mb-12 max-w-2xl text-slate-400">
+          <p className="mb-5 max-w-2xl text-sm leading-6 text-slate-400 md:mb-12 md:text-base">
             A selection of Oracle APEX applications and enterprise solutions.
           </p>
 
-          <div className="grid gap-7 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 md:gap-7">
             {projects.map((project) => (
               <article
                 key={project.number}
-                className="group overflow-hidden rounded-3xl border border-cyan-400/10 bg-[#101827] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.07)]"
+                className="group min-w-0 overflow-hidden rounded-xl md:rounded-3xl border border-cyan-400/10 bg-[#101827] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.07)]"
               >
 
                 {/* Actual project screenshot */}
@@ -491,25 +623,25 @@ export default function Home() {
 
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#06101C]/65 via-transparent to-transparent" />
 
-                  <span className="absolute bottom-5 left-6 rounded-full border border-cyan-400/30 bg-[#06101C]/80 px-3 py-1.5 font-mono text-[10px] tracking-widest text-cyan-200 backdrop-blur-md">
+                  <span className="absolute bottom-2 left-2 rounded-full md:bottom-5 md:left-6 border border-cyan-400/30 bg-[#06101C]/80 px-2 py-1 font-mono text-[8px] tracking-wide md:px-3 md:py-1.5 md:text-[10px] md:tracking-widest text-cyan-200 backdrop-blur-md">
                     PROJECT_{project.number}
                   </span>
 
                 </div>
-                <div className="p-8">
-                  <p className="mb-3 font-mono text-[10px] font-bold tracking-widest text-cyan-400">
+                <div className="min-w-0 p-3 md:p-8">
+                  <p className="mb-2 break-words font-mono text-[8px] font-bold leading-4 tracking-normal text-cyan-400 md:mb-3 md:text-[10px] md:tracking-widest">
                     PROJECT {project.number} · {project.category}
                   </p>
 
-                  <h3 className="mb-4 text-2xl font-bold">
+                  <h3 className="mb-2 break-words text-sm font-bold leading-snug md:mb-4 md:text-2xl">
                     {project.name}
                   </h3>
 
-                  <p className="mb-6 leading-7 text-slate-400">
+                  <p className="mb-3 line-clamp-3 break-words text-[11px] leading-4 text-slate-400 md:mb-6 md:line-clamp-none md:text-base md:leading-7">
                     {project.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
+                  <div className="hidden flex-wrap gap-2 md:flex">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -530,7 +662,7 @@ export default function Home() {
       {/* FREELANCE SERVICES */}
       <section
         id="services"
-        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-8 md:py-24"
       >
         <div className="mx-auto max-w-7xl">
 
@@ -547,7 +679,7 @@ export default function Home() {
             applications, database solutions, reporting systems, and integrations.
           </p>
 
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 md:gap-6">
 
             {[
               {
@@ -581,25 +713,25 @@ export default function Home() {
             ].map((service) => (
               <article
                 key={service.number}
-                className="group rounded-3xl border border-cyan-400/10 bg-[#0C1625] p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_35px_rgba(34,211,238,0.07)] md:p-9"
+                className="group flex min-w-0 flex-col rounded-2xl border border-cyan-400/10 bg-[#0C1625] p-3 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-[0_0_35px_rgba(34,211,238,0.07)] sm:p-5 md:rounded-3xl md:p-9"
               >
-                <p className="mb-6 font-mono text-xs tracking-widest text-cyan-400">
+                <p className="mb-3 font-mono text-[10px] tracking-wide text-cyan-400 sm:text-xs md:mb-6 md:tracking-widest">
                   SERVICE_{service.number}
                 </p>
 
-                <h3 className="mb-4 text-xl font-bold text-white">
+                <h3 className="mb-2 break-words text-sm font-bold leading-snug text-white sm:text-lg md:mb-4 md:text-xl">
                   {service.title}
                 </h3>
 
-                <p className="mb-6 leading-8 text-slate-400">
+                <p className="mb-3 break-words text-xs leading-5 text-slate-400 sm:text-sm sm:leading-6 md:mb-6 md:text-base md:leading-8">
                   {service.description}
                 </p>
 
-                <div className="mb-8 flex flex-wrap gap-2">
+                <div className="mb-4 flex flex-wrap gap-1 md:mb-8 md:gap-2">
                   {service.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.06] px-3 py-1.5 text-xs text-cyan-200"
+                      className="rounded-full border border-cyan-400/20 bg-cyan-400/[0.06] px-2 py-1 text-[9px] text-cyan-200 sm:text-xs md:px-3 md:py-1.5"
                     >
                       {tag}
                     </span>
@@ -608,7 +740,7 @@ export default function Home() {
 
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 font-semibold text-cyan-300 transition hover:text-white"
+                  className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-cyan-300 transition hover:text-white sm:gap-2 sm:text-base"
                 >
                   Discuss Project <span aria-hidden="true">→</span>
                 </a>
@@ -619,31 +751,31 @@ export default function Home() {
         </div>
       </section>
       {/* CONTACT */}
-      <section id="contact" className="scroll-mt-24 border-t border-cyan-400/10 px-6 py-28">
+      <section id="contact" className="scroll-mt-24 border-t border-cyan-400/10 px-4 py-8 sm:px-6 md:py-28">
         <div className="mx-auto max-w-5xl">
 
-          <div className="mb-12 text-center">
-            <p className="mb-5 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
+          <div className="mb-6 text-center md:mb-12">
+            <p className="mb-3 font-mono text-[10px] md:mb-5 md:text-xs font-bold tracking-[0.2em] text-cyan-400">
               // LET'S WORK TOGETHER
             </p>
 
-            <h2 className="text-4xl font-black md:text-6xl">
+            <h2 className="text-[clamp(1.75rem,7vw,2.25rem)] font-black leading-tight md:text-6xl">
               Have a Project in Mind?
             </h2>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-400 sm:text-base md:mt-6 md:text-lg md:leading-8">
               Looking for an Oracle APEX developer, PL/SQL expert,
               or help building your next application?
               Share your requirements and let's connect.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-cyan-400/20 bg-[#101827] p-6 shadow-[0_0_50px_rgba(34,211,238,0.04)] md:p-10">
+          <div className="rounded-2xl border border-cyan-400/20 bg-[#101827] p-4 sm:p-6 md:rounded-3xl shadow-[0_0_50px_rgba(34,211,238,0.04)] md:p-10">
 
             <form
               action="/api/contact"
               method="POST"
-              className="space-y-6"
+              className="space-y-4 md:space-y-6"
               onSubmit={handleInquirySubmit}
             >
 
@@ -656,10 +788,10 @@ export default function Home() {
                 aria-hidden="true"
               />
 
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-2 md:gap-6">
 
                 <div>
-                  <label htmlFor="client-name" className="mb-2 block text-sm font-semibold text-slate-200">
+                  <label htmlFor="client-name" className="mb-1.5 block text-xs font-semibold text-slate-200 sm:text-sm md:mb-2">
                     Full Name *
                   </label>
                   <input
@@ -670,12 +802,12 @@ export default function Home() {
                     maxLength={100}
                     autoComplete="name"
                     placeholder="Your full name"
-                    className="w-full rounded-xl border border-cyan-400/15 bg-[#080D19] px-5 py-4 text-white outline-none transition focus:border-cyan-400"
+                    className="w-full rounded-xl border border-cyan-400/15 bg-[#080D19] px-3 py-3 text-sm text-white outline-none sm:px-5 sm:py-4 sm:text-base transition focus:border-cyan-400"
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="client-email" className="mb-2 block text-sm font-semibold text-slate-200">
+                  <label htmlFor="client-email" className="mb-1.5 block text-xs font-semibold text-slate-200 sm:text-sm md:mb-2">
                     Email Address *
                   </label>
                   <input
@@ -686,14 +818,14 @@ export default function Home() {
                     maxLength={254}
                     autoComplete="email"
                     placeholder="you@company.com"
-                    className="w-full rounded-xl border border-cyan-400/15 bg-[#080D19] px-5 py-4 text-white outline-none transition focus:border-cyan-400"
+                    className="w-full rounded-xl border border-cyan-400/15 bg-[#080D19] px-3 py-3 text-sm text-white outline-none sm:px-5 sm:py-4 sm:text-base transition focus:border-cyan-400"
                   />
                 </div>
 
               </div>
 
               <div>
-                <label htmlFor="client-service" className="mb-2 block text-sm font-semibold text-slate-200">
+                <label htmlFor="client-service" className="mb-1.5 block text-xs font-semibold text-slate-200 sm:text-sm md:mb-2">
                   Service Required *
                 </label>
 
@@ -702,7 +834,7 @@ export default function Home() {
                   name="service"
                   required
                   defaultValue=""
-                  className="w-full rounded-xl border border-cyan-400/15 bg-[#080D19] px-5 py-4 text-white outline-none transition focus:border-cyan-400"
+                  className="w-full rounded-xl border border-cyan-400/15 bg-[#080D19] px-3 py-3 text-sm text-white outline-none sm:px-5 sm:py-4 sm:text-base transition focus:border-cyan-400"
                 >
                   <option value="" disabled>Select a service</option>
                   <option value="Oracle APEX Development">Oracle APEX Development</option>
@@ -716,7 +848,7 @@ export default function Home() {
               </div>
 
               <div>
-                <label htmlFor="client-message" className="mb-2 block text-sm font-semibold text-slate-200">
+                <label htmlFor="client-message" className="mb-1.5 block text-xs font-semibold text-slate-200 sm:text-sm md:mb-2">
                   Project Requirements *
                 </label>
 
@@ -726,16 +858,16 @@ export default function Home() {
                   required
                   minLength={10}
                   maxLength={5000}
-                  rows={6}
+                  rows={4}
                   placeholder="Tell me about your project, requirements, timeline, and budget..."
-                  className="w-full resize-y rounded-xl border border-cyan-400/15 bg-[#080D19] px-5 py-4 text-white outline-none transition focus:border-cyan-400"
+                  className="w-full resize-y rounded-xl border border-cyan-400/15 bg-[#080D19] px-3 py-3 text-sm text-white outline-none sm:px-5 sm:py-4 sm:text-base transition focus:border-cyan-400"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={inquiryStatus === "sending"}
-                className="w-full rounded-xl bg-cyan-500 px-8 py-4 font-bold text-[#06101C] transition hover:bg-cyan-300 disabled:cursor-wait disabled:opacity-60"
+                className="w-full rounded-xl bg-cyan-500 px-5 py-3 text-sm font-bold sm:px-8 sm:py-4 sm:text-base text-[#06101C] transition hover:bg-cyan-300 disabled:cursor-wait disabled:opacity-60"
               >
                 {inquiryStatus === "sending"
                   ? "Sending your inquiry..."
@@ -745,28 +877,28 @@ export default function Home() {
               {inquiryStatus === "success" && (
                 <div
                   role="presentation"
-                  className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#020617]/85 p-5 backdrop-blur-md"
+                  className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#020617]/85 p-3 sm:p-5 backdrop-blur-md"
                 >
                   <div
                     role="alertdialog"
                     aria-modal="true"
                     aria-labelledby="inquiry-success-title"
                     aria-describedby="inquiry-success-description"
-                    className="w-full max-w-md rounded-3xl border border-cyan-400/40 bg-[#0B1525] p-8 text-center shadow-[0_0_80px_rgba(34,211,238,0.18)]"
+                    className="w-full max-w-md max-h-[calc(100dvh-24px)] overflow-y-auto rounded-2xl border border-cyan-400/40 bg-[#0B1525] px-4 py-5 text-center shadow-[0_0_80px_rgba(34,211,238,0.18)] sm:rounded-3xl sm:p-8"
                   >
-                    <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/10 text-4xl text-cyan-300">
+                    <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/10 text-3xl text-cyan-300 sm:mb-5 sm:h-20 sm:w-20 sm:text-4xl">
                       ✓
                     </div>
 
-                    <p className="mb-3 font-mono text-xs tracking-[0.2em] text-cyan-400">
+                    <p className="mb-2 font-mono text-[10px] tracking-[0.12em] text-cyan-400 sm:mb-3 sm:text-xs sm:tracking-[0.2em]">
                       JARVIS / MESSAGE DELIVERED
                     </p>
 
-                    <h3 id="inquiry-success-title" className="mb-4 text-2xl font-black text-white">
+                    <h3 id="inquiry-success-title" className="mb-2 text-xl font-black leading-tight text-white sm:mb-4 sm:text-2xl">
                       Inquiry Sent Successfully!
                     </h3>
 
-                    <p id="inquiry-success-description" className="mb-8 leading-7 text-slate-400">
+                    <p id="inquiry-success-description" className="mb-4 text-sm leading-6 text-slate-400 sm:mb-8 sm:text-base sm:leading-7">
                       Thank you for reaching out.
                       I'll get back to you soon.
                     </p>
@@ -775,7 +907,7 @@ export default function Home() {
                       type="button"
                       autoFocus
                       onClick={() => setInquiryStatus("idle")}
-                      className="w-full rounded-xl bg-cyan-500 px-6 py-4 font-bold text-[#06101C] transition hover:bg-cyan-300"
+                      className="w-full rounded-xl bg-cyan-500 px-4 py-3 text-sm font-bold text-[#06101C] transition hover:bg-cyan-300 sm:px-6 sm:py-4 sm:text-base"
                     >
                       OK, GOT IT
                     </button>
@@ -807,25 +939,5 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

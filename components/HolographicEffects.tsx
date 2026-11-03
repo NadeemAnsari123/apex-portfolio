@@ -52,11 +52,11 @@ export default function HolographicEffects() {
       <div className="hud-blink absolute left-[12%] top-[24%] h-1.5 w-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_#22d3ee]" />
       <div className="hud-blink absolute bottom-[25%] right-[12%] h-1.5 w-1.5 rounded-full bg-blue-400 shadow-[0_0_12px_#3b82f6]" />
 
-      <div className="hud-float absolute left-[4%] top-[35%] font-mono text-[8px] tracking-widest text-cyan-400/50">
+     <div className="hud-float absolute left-[4%] top-[35%] hidden font-mono text-[8px] tracking-widest text-cyan-400/50 lg:block">
         SYS.01
       </div>
 
-      <div className="hud-float absolute bottom-[32%] right-[3%] font-mono text-[8px] tracking-widest text-cyan-400/50">
+      <div className="hud-float absolute bottom-[32%] right-[3%] hidden font-mono text-[8px] tracking-widest text-cyan-400/50 lg:block">
         APEX.CORE
       </div>
 
