@@ -190,9 +190,9 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-5 pt-4 md:pb-28 md:pt-28">
+      <section className="relative overflow-hidden px-6 pb-5 pt-4 md:pb-28 md:pt-10 lg:pt-12">
         
-{/* MOBILE ONLY — JARVIS DIGITAL ATMOSPHERE */}
+{/* RESPONSIVE — JARVIS DIGITAL ATMOSPHERE (MOBILE + DESKTOP) */}
 
 {/* Mobile hologram animations */}
 <style>{`
@@ -231,18 +231,56 @@ export default function Home() {
     animation: mobileEnergyPulse 3s ease-in-out infinite;
   }
 
+  /* Original armored JARVIS messenger: fly-in, hover, welcome */
+  @keyframes jarvisFlyAcross {
+    0% { transform: translate(-420px, 55px) rotate(-17deg) scale(.58); opacity: 0; }
+    12% { opacity: 1; }
+    45% { transform: translate(-40px, -5px) rotate(8deg) scale(.95); opacity: 1; }
+    62%, 86% { transform: translate(0, -9px) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translate(470px, -65px) rotate(16deg) scale(.7); opacity: 0; }
+  }
+  @keyframes jarvisThruster { 0%,100% { opacity: .5; transform: scaleY(.75); } 50% { opacity: 1; transform: scaleY(1.2); } }
+  @keyframes jarvisWelcome { 0%, 35% { opacity: 0; transform: translateY(12px); } 48%, 83% { opacity: 1; transform: translateY(0); } 96%,100% { opacity: 0; transform: translateY(-8px); } }
+  @keyframes jarvisFlyMobile {
+    0% { transform: translate(-210px, 35px) rotate(-14deg) scale(.58); opacity: 0; }
+    15% { opacity: 1; }
+    46% { transform: translate(-10px, 0) rotate(5deg) scale(.9); opacity: 1; }
+    60%, 84% { transform: translate(0, -5px) rotate(0deg) scale(1); opacity: 1; }
+    100% { transform: translate(220px, -35px) rotate(14deg) scale(.65); opacity: 0; }
+  }
+  .jarvis-flyer { animation: jarvisFlyMobile 9s ease-in-out infinite; }
+  @media (min-width: 1024px) {
+    .jarvis-flyer { animation-name: jarvisFlyAcross; }
+  }
+  .jarvis-thruster { transform-origin: top center; animation: jarvisThruster .24s ease-in-out infinite; }
+  .jarvis-welcome { animation: jarvisWelcome 9s ease-in-out infinite; }
+  @keyframes jarvisCoreSpin { to { transform: rotate(360deg); } }
+  @keyframes jarvisCoreSpinReverse { to { transform: rotate(-360deg); } }
+  @keyframes jarvisScanSweep { 0%, 100% { transform: translateY(-26px); opacity: .12; } 50% { transform: translateY(26px); opacity: .7; } }
+  @keyframes jarvisCoreBreathe { 0%, 100% { opacity: .55; transform: scale(.94); } 50% { opacity: 1; transform: scale(1.06); } }
+  .jarvis-core-spin { animation: jarvisCoreSpin 22s linear infinite; }
+  .jarvis-core-reverse { animation: jarvisCoreSpinReverse 15s linear infinite; }
+  .jarvis-core-scan { animation: jarvisScanSweep 4s ease-in-out infinite; }
+  .jarvis-core-pulse { animation: jarvisCoreBreathe 3.6s ease-in-out infinite; }
   @media (prefers-reduced-motion: reduce) {
     .mobile-hud-wave,
     .mobile-hud-globe,
-    .mobile-hud-energy {
+    .mobile-hud-energy,
+    .jarvis-core-spin,
+    .jarvis-core-reverse,
+    .jarvis-core-scan,
+    .jarvis-core-pulse,
+    .jarvis-flyer,
+    .jarvis-thruster,
+    .jarvis-welcome {
       animation: none !important;
     }
   }
 `}</style>
 
-<div className="pointer-events-none relative mx-auto mb-0 h-28 w-full max-w-7xl overflow-hidden lg:hidden">
+<div className="pointer-events-none relative mx-auto mb-0 h-52 w-full max-w-7xl overflow-hidden sm:h-48 lg:mb-8 lg:h-36">
   {/* Digital wave lines */}
-<div className="absolute inset-0 opacity-70 mobile-hud-wave">
+<div className="absolute inset-0 opacity-70 lg:opacity-100 mobile-hud-wave">
     <svg
       viewBox="0 0 400 130"
       preserveAspectRatio="none"
@@ -256,14 +294,60 @@ export default function Home() {
           fill="none"
           stroke="#22d3ee"
           strokeWidth="0.6"
-          opacity={0.12 + i * 0.025}
+          opacity={0.2 + i * 0.035}
         />
       ))}
     </svg>
   </div>
 
+  {/* RESPONSIVE — original flying armored JARVIS messenger */}
+  <div className="absolute inset-0 flex items-start justify-center pt-8 lg:items-center lg:pt-0" aria-hidden="true">
+    <div className="absolute h-32 w-72 rounded-full bg-cyan-400/[0.07] blur-3xl" />
+    <div className="jarvis-flyer relative z-10 h-24 w-20 lg:h-32 lg:w-28 drop-shadow-[0_0_20px_rgba(34,211,238,0.65)]">
+      <svg viewBox="0 0 140 160" className="h-full w-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="jarvisArmor" x1="20" y1="20" x2="120" y2="145" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#3B526A"/><stop offset=".48" stopColor="#0B1C31"/><stop offset="1" stopColor="#1B6B83"/>
+          </linearGradient>
+          <linearGradient id="jarvisFlame" x1="0" y1="0" x2="0" y2="1">
+            <stop stopColor="#E0FCFF"/><stop offset=".5" stopColor="#22D3EE"/><stop offset="1" stopColor="#22D3EE" stopOpacity="0"/>
+          </linearGradient>
+        </defs>
+        <g className="jarvis-thruster">
+          <path d="M45 125L37 155L54 138L57 123Z" fill="url(#jarvisFlame)"/>
+          <path d="M83 123L88 157L101 128L95 120Z" fill="url(#jarvisFlame)"/>
+        </g>
+        <path d="M47 94L33 124L48 134L61 108M91 94L107 124L92 134L79 108" fill="url(#jarvisArmor)" stroke="#46DFF1" strokeWidth="2"/>
+        <path d="M46 51L24 63L10 99L26 107L45 80M94 51L116 63L130 99L114 107L95 80" fill="url(#jarvisArmor)" stroke="#46DFF1" strokeWidth="2"/>
+        <path d="M43 48L70 42L97 48L103 93L86 118L54 118L37 93Z" fill="url(#jarvisArmor)" stroke="#61E7F8" strokeWidth="2"/>
+        <path d="M50 65L70 73L90 65L86 96L70 106L54 96Z" fill="#081625" stroke="#22D3EE" strokeOpacity=".7"/>
+        <circle cx="70" cy="83" r="12" fill="#22D3EE" fillOpacity=".14" stroke="#A5F3FC" strokeWidth="2"/>
+        <circle cx="70" cy="83" r="5" fill="#D8FCFF"/>
+        <path d="M51 15L70 7L89 15L97 37L87 53L53 53L43 37Z" fill="url(#jarvisArmor)" stroke="#67E8F9" strokeWidth="2"/>
+        <path d="M51 32L64 36L70 34L76 36L89 32L84 42L70 45L56 42Z" fill="#5DE7F9" stroke="#C9FAFF" strokeWidth="1.5"/>
+        <path d="M49 20L70 14L91 20M41 67L26 92M99 67L114 92" stroke="#6EE7F9" strokeOpacity=".65" strokeWidth="2"/>
+        <circle cx="20" cy="103" r="6" fill="#B6F8FF" fillOpacity=".8"/>
+        <circle cx="120" cy="103" r="6" fill="#B6F8FF" fillOpacity=".8"/>
+      </svg>
+    </div>
+    <div className="jarvis-welcome absolute bottom-7 left-1/2 w-[min(88%,290px)] -translate-x-1/2 rounded-xl border border-cyan-300/40 bg-[#071523]/90 px-3 py-2 text-center lg:bottom-auto lg:left-[58%] lg:top-5 lg:w-auto lg:translate-x-0 lg:px-5 lg:py-3 lg:text-left shadow-[0_0_35px_rgba(34,211,238,0.18)]">
+      <p className="font-mono text-[8px] tracking-[.14em] text-cyan-300/70 lg:text-[9px] lg:tracking-[.25em]">JARVIS / INCOMING MESSAGE</p>
+      <p className="mt-1 text-xs font-bold tracking-wide text-cyan-100 lg:text-sm">WELCOME! CONTACT NADEEM</p>
+      <p className="text-[9px] text-slate-400 lg:text-[10px]">Let&apos;s build something extraordinary.</p>
+    </div>
+  </div>
+
+  {/* DESKTOP ONLY — live telemetry labels */}
+  <div className="absolute bottom-3 left-[27%] hidden flex-col gap-1 font-mono text-[9px] tracking-[0.15em] text-cyan-300/65 lg:flex">
+    <span>APEX ENGINE <span className="text-emerald-300">ACTIVE</span></span>
+    <span>SECURE CONNECTION <span className="text-emerald-300">ESTABLISHED</span></span>
+  </div>
+  <div className="absolute bottom-3 right-[15%] hidden font-mono text-[9px] tracking-[0.15em] text-cyan-300/60 lg:block">
+    HOLOGRAPHIC INTERFACE / V2
+  </div>
+
   {/* Digital globe */}
-  <div className="absolute right-2 top-2 flex h-24 w-24 items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/[0.04] shadow-[0_0_35px_rgba(34,211,238,0.12)] mobile-hud-energy">
+  <div className="absolute right-2 top-2 hidden h-24 w-24 items-center justify-center lg:flex rounded-full border border-cyan-400/30 bg-cyan-400/[0.04] shadow-[0_0_35px_rgba(34,211,238,0.12)] mobile-hud-energy">
     <div className="absolute inset-3 rounded-full border border-dashed border-cyan-300/40 mobile-hud-globe" />
     <div className="absolute inset-6 rounded-full border border-cyan-400/30" />
     <div className="h-16 w-8 rounded-full border border-cyan-300/40" />
@@ -277,7 +361,7 @@ export default function Home() {
     ORACLE APEX · SQL · BI · HCM
   </div>
 
-  <div className="absolute bottom-3 left-3 flex items-center gap-2 font-mono text-[9px] tracking-widest text-cyan-400/70">
+  <div className="absolute bottom-2 left-3 flex items-center gap-2 font-mono text-[9px] tracking-widest text-cyan-400/70 lg:bottom-3">
     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
     JARVIS SYSTEM ONLINE
   </div>
