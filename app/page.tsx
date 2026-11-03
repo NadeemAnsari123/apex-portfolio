@@ -156,7 +156,7 @@ export default function Home() {
 
       {/* NAVIGATION */}
       <header className="sticky top-0 z-50 border-b border-cyan-400/10 bg-[#060B16]/95 backdrop-blur-xl">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
+        <nav className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-5 sm:px-6 lg:px-8 xl:px-10">
 
           <a href="#" className="text-xl font-black tracking-tight">
             NADEEM ANSARI<span className="text-cyan-400">.</span>
@@ -218,7 +218,7 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative overflow-hidden px-6 pb-5 pt-4 md:pb-28 md:pt-10 lg:pt-12">
+      <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 xl:px-10 pb-5 pt-4 md:pb-28 md:pt-10 lg:pt-12">
         
 {/* RESPONSIVE — JARVIS DIGITAL ATMOSPHERE (MOBILE + DESKTOP) */}
 
@@ -306,7 +306,7 @@ export default function Home() {
   }
 `}</style>
 
-<div className="pointer-events-none relative mx-auto mb-0 h-52 w-full max-w-7xl overflow-hidden sm:h-48 lg:mb-8 lg:h-36">
+<div className="pointer-events-none relative mx-auto mb-0 h-52 w-full max-w-[1600px] overflow-hidden sm:h-48 lg:mb-8 lg:h-36">
   {/* Digital wave lines */}
 <div className="absolute inset-0 opacity-70 lg:opacity-100 mobile-hud-wave">
     <svg
@@ -400,7 +400,7 @@ export default function Home() {
         <div className="pointer-events-none absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-cyan-500/[0.07] blur-[130px]" />
         <div className="pointer-events-none absolute -left-40 bottom-0 h-[400px] w-[400px] rounded-full bg-blue-600/[0.06] blur-[120px]" />
 
-        <div className="relative mx-auto max-w-7xl">
+        <div className="relative mx-auto max-w-[1600px]">
 
           {/* TWO-COLUMN HERO */}
           {/* <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12"> */}
@@ -569,9 +569,9 @@ export default function Home() {
       {/* ABOUT */}
       <section
         id="about"
-        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-8 md:py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-4 py-8 sm:px-6 lg:px-8 xl:px-10 md:py-24"
       >
-        <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2 md:gap-12">
+        <div className="mx-auto grid max-w-[1600px] gap-5 md:grid-cols-2 md:gap-12">
           <div>
             <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
               // ABOUT ME
@@ -595,9 +595,9 @@ export default function Home() {
       {/* PROFESSIONAL EXPERIENCE */}
       <section
         id="experience"
-        className="scroll-mt-24 border-t border-cyan-400/10 px-6 py-8 md:py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 px-4 py-8 sm:px-6 lg:px-8 xl:px-10 md:py-24"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1600px]">
           <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
             // CAREER TIMELINE
           </p>
@@ -661,8 +661,8 @@ export default function Home() {
         </div>
       </section>
       {/* EXPERTISE */}
-      <section id="expertise" className="scroll-mt-24 px-6 py-8 md:py-24">
-        <div className="mx-auto max-w-7xl">
+      <section id="expertise" className="scroll-mt-24 px-4 py-8 sm:px-6 lg:px-8 xl:px-10 md:py-24">
+        <div className="mx-auto max-w-[1600px]">
 
           <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
             // WHAT I DO
@@ -700,9 +700,9 @@ export default function Home() {
       {/* PROJECTS */}
       <section
         id="projects"
-        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-8 md:py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-4 py-8 sm:px-6 lg:px-8 xl:px-10 md:py-24"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1600px]">
 
           <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
             // SELECTED WORK
@@ -774,9 +774,9 @@ export default function Home() {
       {/* FREELANCE SERVICES */}
       <section
         id="services"
-        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-6 py-8 md:py-24"
+        className="scroll-mt-24 border-t border-cyan-400/10 bg-white/[0.02] px-4 py-8 sm:px-6 lg:px-8 xl:px-10 md:py-24"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[1600px]">
 
           <p className="mb-4 font-mono text-xs font-bold tracking-[0.2em] text-cyan-400">
             // SERVICES / WHAT I CAN BUILD
@@ -863,8 +863,8 @@ export default function Home() {
         </div>
       </section>
       {/* CONTACT */}
-      <section id="contact" className="scroll-mt-24 border-t border-cyan-400/10 px-4 py-8 sm:px-6 md:py-28">
-        <div className="mx-auto max-w-5xl">
+      <section id="contact" className="scroll-mt-24 border-t border-cyan-400/10 px-4 py-8 sm:px-6 lg:px-8 xl:px-10 md:py-28">
+        <div className="mx-auto max-w-6xl">
 
           <div className="mb-6 text-center md:mb-12">
             <p className="mb-3 font-mono text-[10px] md:mb-5 md:text-xs font-bold tracking-[0.2em] text-cyan-400">
@@ -1044,7 +1044,7 @@ export default function Home() {
         </div>
       </section>
       {/* FOOTER */}
-      <footer className="border-t border-cyan-400/10 px-6 py-8 text-center text-sm text-slate-500">
+      <footer className="border-t border-cyan-400/10 px-4 py-8 sm:px-6 lg:px-8 xl:px-10 text-center text-sm text-slate-500">
         © 2026 Nadeem Ansari. All Rights Reserved.
       </footer>
 
