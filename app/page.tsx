@@ -1,7 +1,7 @@
 ﻿
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AICore from "@/components/AICore";
 import HolographicHUD from "@/components/HolographicHUD";
 import HolographicEffects from "@/components/HolographicEffects";
@@ -85,6 +85,34 @@ const expertise = [
     text: "Developing Android applications and interactive mobile puzzle games using Flutter, Dart, custom animations, and state management.",
   },];
 export default function Home() {
+  // Open the homepage at the JARVIS welcome hero instead of restoring
+  // a previous scroll position. Preserve intentional #section links.
+  useEffect(() => {
+    if (window.location.hash) return;
+
+    const previousRestoration = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+
+    const goToTop = () => {
+      if (!window.location.hash) {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }
+    };
+
+    goToTop();
+    const firstFrame = window.requestAnimationFrame(goToTop);
+    const shortDelay = window.setTimeout(goToTop, 120);
+    const lateDelay = window.setTimeout(goToTop, 450);
+    window.addEventListener("pageshow", goToTop);
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.clearTimeout(shortDelay);
+      window.clearTimeout(lateDelay);
+      window.removeEventListener("pageshow", goToTop);
+      window.history.scrollRestoration = previousRestoration;
+    };
+  }, []);
   const [inquiryStatus, setInquiryStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
